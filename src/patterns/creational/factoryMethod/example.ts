@@ -1,9 +1,14 @@
-import Restaurant from "./simple/factoryMethod";
+import { KoreanRestaurant, MexicanRestaurant, Restaurant } from "./factoryMethod";
 
 
-const koreanDish = Restaurant.getDish("Korean")
-const mexicanDish = Restaurant.getDish("Mexican")
+function example(creator: Restaurant) {
+    console.log('Client: can use any restaurant');
+    console.log(creator.listIngredients());
+}
 
+console.log('App: Launched with the MexicanRestaurant.');
+example(new MexicanRestaurant("Taco"));
+console.log('');
 
-console.log(koreanDish.getReview())
-console.log(mexicanDish.getReview())
+console.log('App: Launched with the KoreanRestaurant.');
+example(new KoreanRestaurant("Korean Stew"));

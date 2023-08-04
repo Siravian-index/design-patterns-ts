@@ -1,4 +1,4 @@
-abstract class Restaurant {
+export abstract class Restaurant {
     order = ""
     public abstract factoryMethod(): Dish;
 
@@ -9,7 +9,7 @@ abstract class Restaurant {
 }
 
 
-class MexicanRestaurant extends Restaurant {
+export class MexicanRestaurant extends Restaurant {
     constructor(order: string) {
         super()
         this.order = order
@@ -23,7 +23,7 @@ class MexicanRestaurant extends Restaurant {
     }
 }
 
-class KoreanRestaurant extends Restaurant {
+export class KoreanRestaurant extends Restaurant {
     constructor(order: string) {
         super()
         this.order = order
@@ -61,15 +61,3 @@ class KoreanStew implements Dish {
         return this.ingredients.join(", ")
     }
 }
-
-function clientCode(creator: Restaurant) {
-    console.log('Client: can use any restaurant');
-    console.log(creator.listIngredients());
-}
-
-console.log('App: Launched with the MexicanRestaurant.');
-clientCode(new MexicanRestaurant("Taco"));
-console.log('');
-
-console.log('App: Launched with the KoreanRestaurant.');
-clientCode(new KoreanRestaurant("Korean Stew"));
