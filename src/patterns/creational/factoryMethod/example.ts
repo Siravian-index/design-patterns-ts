@@ -1,6 +1,9 @@
-import Restaurant from "./factoryMethod";
+import Restaurant from "./simple/factoryMethod";
 
 
-const dish = Restaurant.getDish("Korean")
+const koreanDish = Restaurant.getDish("Korean")
+const mexicanDish = Restaurant.getDish("Mexican")
 
-console.log(dish.getReview())
+
+console.log(koreanDish.getReview())
+console.log(mexicanDish.getReview())

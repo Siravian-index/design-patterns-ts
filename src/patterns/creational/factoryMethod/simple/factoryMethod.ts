@@ -1,6 +1,6 @@
 
 // factory
-export default class Restaurant {
+export default abstract class Restaurant {
     static getDish(style: string): IDish {
         if (style === "Mexican") {
             return new MexicanDish()
