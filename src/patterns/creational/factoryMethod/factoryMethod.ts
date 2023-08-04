@@ -2,7 +2,7 @@ export abstract class Restaurant {
     order = ""
     public abstract factoryMethod(): Dish;
 
-    public listIngredients(): string {
+    public previewDish(): string {
         const dish = this.factoryMethod();
         return `Ingredients: ${dish.listIngredients()}`;
     }
@@ -36,6 +36,19 @@ export class KoreanRestaurant extends Restaurant {
     }
 }
 
+export class ColombianRestaurant extends Restaurant {
+    constructor(order: string) {
+        super()
+        this.order = order
+    }
+    public factoryMethod(): Dish {
+        if (this.order === "Bandeja Paisa") {
+            return new BandejaPaisa()
+        }
+        throw new Error("Order not found")
+    }
+}
+
 // Common interface
 interface Dish {
     ingredients: string[]
@@ -59,5 +72,15 @@ class KoreanStew implements Dish {
     }
     public listIngredients(): string {
         return this.ingredients.join(", ")
+    }
+}
+
+class BandejaPaisa implements Dish {
+    ingredients: string[];
+    constructor() {
+        this.ingredients = ["Beans", "Rice", "Chorizo"]
+    }
+    public listIngredients(): string {
+        return this.ingredients.join(", ").concat("!")
     }
 }
