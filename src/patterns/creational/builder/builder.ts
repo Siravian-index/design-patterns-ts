@@ -12,7 +12,7 @@ interface Builder {
     addWrapper(wrapper: Wrapper): void;
 }
 
-class SandwichBuilder implements Builder {
+export class SandwichBuilder implements Builder {
     private product: Sandwich;
 
     constructor() {
@@ -61,7 +61,7 @@ class Sandwich {
     }
 }
 
-class SandwichDirector {
+export class SandwichDirector {
     public builder: SandwichBuilder
 
     addBuilder(builder: SandwichBuilder) {
@@ -84,15 +84,3 @@ class SandwichDirector {
         return this.builder.getProduct()
     }
 }
-
-function clientCode(director: SandwichDirector) {
-    const builder = new SandwichBuilder();
-    director.addBuilder(builder)
-    const spicySandwich = director.getSpicyChicken()
-    spicySandwich.listParts()
-    const superSandwich = director.getSuperSandwich()
-    superSandwich.listParts()
-
-}
-
-clientCode(new SandwichDirector());
