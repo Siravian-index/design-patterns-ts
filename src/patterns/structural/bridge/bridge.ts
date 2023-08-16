@@ -46,7 +46,6 @@ export class RemoteControl {
     this.device.setChannel(prev + 1)
   }
 
-
 }
 
 export class RemoteControlWithMute extends RemoteControl {
@@ -93,7 +92,7 @@ export class Radio implements Device {
 
 }
 
-export class TV implements Device{
+export class TV implements Device {
   private isOn: boolean = false
   private volume: number = 20
   private channel: number = 1

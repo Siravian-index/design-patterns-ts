@@ -1,15 +1,16 @@
-import { Radio, RemoteControl } from "./bridge";
+import { Radio, RemoteControl, RemoteControlWithMute } from "./bridge";
 
+function main() {
 
-const radio = new Radio()
-console.log(radio)
-const remote = new RemoteControl(radio)
-remote.togglePower()
-remote.volumeDown()
-remote.volumeDown()
-remote.volumeDown()
-remote.volumeDown()
-remote.volumeDown()
-remote.volumeDown()
+  const radio = new Radio()
+  console.log(radio)
+  const remote = new RemoteControlWithMute(radio)
+  remote.togglePower()
+  remote.volumeUp()
+  remote.volumeUp()
+  remote.channelUp()
+  remote.mute()
+  console.log(radio)
+}
 
-console.log(radio)
+main()
