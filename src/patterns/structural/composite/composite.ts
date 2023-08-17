@@ -18,8 +18,6 @@ export abstract class Product {
     return false;
   }
   public abstract operation(): number;
-
-
 }
 
 export class Item extends Product {
