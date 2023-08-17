@@ -6,31 +6,20 @@ function clientCode(component: Product) {
 }
 
 
-const simple = new Item("Tv", 150);
-console.log('Client: I\'ve got a simple component:');
-clientCode(simple);
-console.log('');
-
-const tree = new Box();
-const branch1 = new Box();
-branch1.add(new Item("Samsung phone", 80));
-branch1.add(new Item("Plastic Bottle", 20));
-const branch2 = new Box();
-branch2.add(new Item("Laptop", 100));
-tree.add(branch1);
-tree.add(branch2);
-console.log('Client: Now I\'ve got a composite tree:');
-clientCode(tree);
-console.log('');
-
-function clientCode2(component1: Product, component2: Product) {
-
-  if (component1.isComposite()) {
-      component1.add(component2);
-  }
-  console.log(`Total: ${component1.operation()}`);
-
-}
-
-console.log('Client: I don\'t need to check the components classes even when managing the tree:');
-clientCode2(tree, simple);
+const cart = new Box()
+const foodBox = new Box()
+const giftBox = new Box()
+const pizza = new Item("Pizza", 8)
+const orangeJuice = new Item("Orange Juice", 5)
+const donut = new Item("Donut", 3)
+foodBox.add(pizza)
+foodBox.add(orangeJuice)
+foodBox.add(donut)
+const laptop = new Item("Laptop", 300)
+const phone = new Item("Phone", 250)
+giftBox.add(laptop)
+giftBox.add(phone)
+cart.add(foodBox)
+cart.add(giftBox)
+console.log("Cart Total:")
+clientCode(cart)
