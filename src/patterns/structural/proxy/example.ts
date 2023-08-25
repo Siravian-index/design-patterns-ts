@@ -1,4 +1,4 @@
-import { Internet, RealInternet, SchoolInternetProxy } from "./proxy";
+import { CacheInternetProxy, Internet, RealInternet, SchoolInternetProxy } from "./proxy";
 
 function clientCode(internet: Internet, url: string) {
   internet.connectTo(url)
@@ -7,7 +7,13 @@ function clientCode(internet: Internet, url: string) {
 
 const internet = new RealInternet()
 
-clientCode(internet, "google.com")
+clientCode(internet, "facebook.com")
 
 const schoolInternet = new SchoolInternetProxy()
 clientCode(schoolInternet, "facebook.com")
+
+
+const cacheInternet = new CacheInternetProxy()
+clientCode(cacheInternet, "facebook.com")
+clientCode(cacheInternet, "facebook.com")
+

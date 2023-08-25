@@ -22,3 +22,19 @@ export class SchoolInternetProxy implements Internet {
     return ["facebook.com", "twitter.com", "etc.com"]
   }
 }
+
+
+export class CacheInternetProxy implements Internet {
+  private service = new RealInternet()
+  private cache: Record<string, string> = {}
+
+  connectTo(url: string) {
+    if (this.cache[url]) {
+      console.log(this.cache[url])
+      return
+    }
+    this.service.connectTo(url)
+    this.cache[url] = `Cached webpage ${url}`
+  }
+
+}
