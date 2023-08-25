@@ -9,12 +9,13 @@ export class RealInternet implements Internet {
 }
 
 export class SchoolInternetProxy implements Internet {
+  private service = new RealInternet()
   connectTo(url: string) {
     if (this.getForbiddenPages().includes(url)) {
       console.log(`Cannot access ${url} as it is blocked by the School network`)
       return
     }
-    console.log(`Connecting to ${url}`)
+    this.service.connectTo(url)
   }
 
   private getForbiddenPages(): string[] {
