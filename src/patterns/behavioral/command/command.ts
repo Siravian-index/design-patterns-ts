@@ -9,10 +9,9 @@ export class UpdatePostStatusCommand implements Command {
     private post: Post
     private status: Status
 
-    updatePostStatus(post: Post, status: Status) {
+    constructor(post: Post, status: Status) {
         this.post = post
         this.status = status
-        return this
     }
 
     execute(): void {
@@ -24,10 +23,9 @@ export class UpdatePostPointsCommand implements Command {
     private post: Post
     private points: number
 
-    updatePostPoints(post: Post, points: number) {
+    constructor(post: Post, points: number) {
         this.post = post
         this.points = points
-        return this
     }
 
     execute(): void {
@@ -39,13 +37,10 @@ export class UpdatePostPointsCommand implements Command {
 export class Post {
     private status: Status = "PENDING"
     private title: string
-    private content: string
-    private tags: string[] = []
     private points: number  = 0
 
-    constructor(title: string, content: string) {
+    constructor(title: string) {
         this.title = title
-        this.content = content
     }
 
     updatePublishStatus(status: Status) {

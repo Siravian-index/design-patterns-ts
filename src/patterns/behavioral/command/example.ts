@@ -1,13 +1,13 @@
 import { Invoker, Post, UpdatePostPointsCommand, UpdatePostStatusCommand, } from './command';
 function clientCode() {
-  const post = new Post("Clean Code", "Lorem ipsum")
+  const post = new Post("Clean Code")
   console.log("Post Before Update")
   console.log(post)
   console.log("----------------")
 
   const invoker = new Invoker()
-  const updateStatusCommand = new UpdatePostStatusCommand()
-  invoker.setCommand(updateStatusCommand.updatePostStatus(post, "ACCEPTED"))
+  const updateStatusCommand = new UpdatePostStatusCommand(post, "ACCEPTED")
+  invoker.setCommand(updateStatusCommand)
   invoker.executeCommand()
   console.log("Post After status Update")
   console.log(post)
@@ -16,9 +16,7 @@ function clientCode() {
 
 
   const commands = new Array(10).fill(0).map((_, i) => {
-    const command = new UpdatePostPointsCommand()
-    const update = command.updatePostPoints(post, i)
-    return update
+    return new UpdatePostPointsCommand(post, i)
   })
 
   console.log("Array of commands ready to be apply")
